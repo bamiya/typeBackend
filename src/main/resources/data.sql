@@ -1,0 +1,6 @@
+INSERT INTO BOARD (ID, TITLE, CONTENT)
+VALUES (1, '게시글 제목1', '게시글 내용1');
+INSERT INTO BOARD (ID, TITLE, CONTENT)
+VALUES (2, '게시글 제목2', '게시글 내용2');
+INSERT INTO BOARD (ID, TITLE, CONTENT)
+VALUES (3, '게시글 제목3', '게시글 내용3');
