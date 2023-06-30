@@ -10,35 +10,35 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "board")
+@Table(name = "BOARD")
 public class BoardEntity {
     @Id // pk 컬럼 지정. 필수
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
 
-    @Column(length = 20, nullable = false) // 컬럼 크기는 20, NOT NULL
-    private String boardWriter;
+    @Column(name = "boardWriter", length = 20, nullable = false) // 컬럼 크기는 20, NOT NULL
+    private String board_writer;
 
     @Column // 크기 255, null 가능
-    private  String boardPass;
+    private  String board_pass;
 
     @Column
-    private  String boardTitle;
+    private  String board_title;
 
     @Column
-    private  String boardContents;
+    private  String board_contents;
 
     @Column
-    private  int boardHits;
+    private  int board_hits;
 
     //DTO 객체를 Entity 로 옮겨담기
     public static BoardEntity toSaveEntity(BoardDTO boardDTO){
         BoardEntity boardEntity = new BoardEntity();
-        boardEntity.setBoardWriter(boardDTO.getBoardWriter());
-        boardEntity.setBoardPass(boardDTO.getBoardPass());
-        boardEntity.setBoardTitle(boardDTO.getBoardTitle());
-        boardEntity.setBoardContents(boardDTO.getBoardContents());
-        boardEntity.setBoardHits(0);
+        boardEntity.setBoard_writer(boardDTO.getBoard_writer());
+        boardEntity.setBoard_pass(boardDTO.getBoard_pass());
+        boardEntity.setBoard_title(boardDTO.getBoard_title());
+        boardEntity.setBoard_contents(boardDTO.getBoard_contents());
+        boardEntity.setBoard_hits(0);
         return boardEntity;
     }
 }
