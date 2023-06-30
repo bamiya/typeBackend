@@ -1,27 +1,29 @@
 package com.test.type.controller;
 
-import com.test.type.entity.Board;
+import com.test.type.dto.BoardDTO;
 import com.test.type.service.BoardService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
-    }
-
     @GetMapping
-    public List<Board> getAllBoards() {
-        return boardService.getAllBoards();
+    public ResponseEntity<List<BoardDTO>> getAllPosts() {
+        List<BoardDTO> boardDTOList = boardService.findAll();
+        return new ResponseEntity<>(boardDTOList, HttpStatus.OK);
     }
 
     @PostMapping
-    public Board createBoard(@RequestBody Board board) {
-        return boardService.createBoard(board);
+    public ResponseEntity<Void> createPost(@RequestBody BoardDTO boardDTO) {
+        boardService.save(boardDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
