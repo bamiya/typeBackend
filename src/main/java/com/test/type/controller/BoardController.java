@@ -26,4 +26,16 @@ public class BoardController {
         boardService.save(boardDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updatePost(@PathVariable Long id, @RequestBody BoardDTO updatedBoardDTO) {
+        boardService.update(id, updatedBoardDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
+        boardService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
