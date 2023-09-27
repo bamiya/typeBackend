@@ -38,4 +38,10 @@ public class BoardController {
         boardService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<Void> createBoard(@RequestBody BoardDTO boardDTO) {
+        boardService.save(boardDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }
